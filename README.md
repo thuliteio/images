@@ -1,6 +1,10 @@
 # Hyas images
 
-Image render hook + shortcodes for Hyas sites.
+Image render hook + shortcode for Hyas sites.
+
+## Status
+
+[![npm (scoped)](https://img.shields.io/npm/v/@hyas/images?style=flat-square)](https://www.npmjs.com/package/@hyas/images) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/h-enk/hyas-images/CodeQL?style=flat-square)]((https://github.com/h-enk/hyas-images/actions/workflows/codeql.yml))
 
 ## Installation
 
@@ -26,14 +30,18 @@ Add to `./config/_default/params.toml`:
 
 ```bash
 # Images
-quality = 85
-bgColor = "#fff"
-landscapePhotoWidths = [900, 800, 700, 600, 500]
-portraitPhotoWidths = [800, 700, 600, 500]
-lqipWidth = "20x"
-smallLimit = "300"
+imageResponsive = true
+imageConvertTo = "webp"
+imageImageSizes = ["480","720","1080","1280","1600","2048"]
+singleSize = false
+imageAddClass = " img-fluid lazyload blur-up"
 ```
 
 ## Usage
 
 See the Hyas docs: [Images](https://gethyas.com/docs/recipes/images/)
+
+
+## Credits
+
+Based on [DFD Hugo image handling module](https://github.com/danielfdickinson/image-handling-mod-hugo-dfd)
