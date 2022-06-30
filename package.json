@@ -1,7 +1,7 @@
 {
   "name": "@hyas/images",
   "description": "Hyas images",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "browserslist": [
     "defaults"
   ],
@@ -16,7 +16,7 @@
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "devDependencies": {
-    "auto-changelog": "^2.3.0",
-    "shx": "^0.3.3"
+    "auto-changelog": "^2.4.0",
+    "shx": "^0.3.4"
   }
 }
