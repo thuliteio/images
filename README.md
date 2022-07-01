@@ -34,7 +34,7 @@ imageResponsive = true
 imageConvertTo = "webp"
 imageImageSizes = ["480","720","1080","1280","1600","2048"]
 singleSize = false
-imageAddClass = " img-fluid lazyload blur-up"
+imageAddClass = "img-fluid lazyload blur-up"
 ```
 
 ## Usage
