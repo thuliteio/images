@@ -1,0 +1,7 @@
+{{ $noscriptSupport := .noscript }}
+{{- if $noscriptSupport -}}
+    <noscript>
+        {{ partial "renderer/native" . }}
+    </noscript>
+{{- end -}}
+{{ partial "renderer/img" . }}
