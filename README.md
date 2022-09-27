@@ -55,4 +55,4 @@ See the Hyas docs: [Images](https://gethyas.com/docs/recipes/images/)
 
 ## Credits
 
-Based on [lazyimg](https://github.com/hugo-mods/lazyimg)
+Based on [hugo-mods/lazyimg](https://github.com/hugo-mods/lazyimg)
