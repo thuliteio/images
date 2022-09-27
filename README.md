@@ -1,6 +1,6 @@
 # Hyas images
 
-Image render hook + shortcode for Hyas sites.
+Image render hook, shortcode + partial for Hyas sites.
 
 ## Status
 
@@ -29,12 +29,23 @@ Add to `./config/_default/module.toml`:
 Add to `./config/_default/params.toml`:
 
 ```bash
-# Images
-imageResponsive = true
-imageConvertTo = "webp"
-imageImageSizes = ["480","720","1080","1280","1600","2048"]
-singleSize = false
-imageAddClass = "img-fluid lazyload blur-up"
+# lazyimg
+[lazyimg]
+  resizer = "auto"
+  renderer = "lqip-webp"
+
+  # Resizer options:
+  lqipSize = "120x Gaussian"
+  maxSize = "1920x"
+  responsiveSizes = [ "320x", "640x", "768x", "1024x", "1366x", "1600x", "1920x" ]
+  resizeOptions = "Lanczos q95"
+
+  # Renderer options:
+  class = "img-fluid"
+  # alt = ""
+  noscript = true
+
+  errorHandler = "warning"
 ```
 
 ## Usage
@@ -44,4 +55,4 @@ See the Hyas docs: [Images](https://gethyas.com/docs/recipes/images/)
 
 ## Credits
 
-Based on [DFD Hugo image handling module](https://github.com/danielfdickinson/image-handling-mod-hugo-dfd)
+Based on [hugo-mods/lazyimg](https://github.com/hugo-mods/lazyimg)
