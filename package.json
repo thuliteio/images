@@ -1,7 +1,7 @@
 {
   "name": "@hyas/images",
   "description": "Hyas images",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "browserslist": [
     "defaults"
   ],
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "auto-changelog": "^2.4.0",
+    "lazysizes": "^5.3.2",
     "shx": "^0.3.4"
   }
 }
