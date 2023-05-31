@@ -1,0 +1,21 @@
+{{- /*
+  render-hook-template
+  generates params from render hook input.
+  standard params are passed through
+
+  @author @sean-au
+
+  @context dict 
+    .              - unsanitized params
+    .render_hook   - render hook specific 
+    .common        - common params
+
+  @access private
+
+  @example - Go Template
+  {{ partial "render-hook-template" . }}
+
+*/ -}}
+<div class="{{ .render_hook.wrapper_class }}">
+  {{ partial (printf "hri/%v" .common.render_hook) . }}
+</div>

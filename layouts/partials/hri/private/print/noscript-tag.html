@@ -1,0 +1,19 @@
+{{ if and .image.noscript (eq .image.loading "lazysizes") }}
+{{- with .image.picture.original.src }}
+<noscript>
+  <img 
+  src="{{ .RelPermalink }}"
+  height="{{ .Height }}"
+  width="{{ .Width }}" 
+  {{- with $.image.class }}
+    class="{{ . }} noscript"
+  {{- end -}}
+  {{- with $.image.alt }}
+    alt="{{ . }}"
+  {{- end }}
+  {{- with $.image.title }}
+    title="{{ . }}"
+  {{- end }} >
+</noscript>
+{{ end }}
+{{ end }}

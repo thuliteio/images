@@ -1,0 +1,9 @@
+{{ $params := partial "hri/private/params/shortcode-get-params" . }}
+
+{{- $common := partial "hri/private/params/common" $params }}
+{{- $params = merge $params (dict "common" $common) -}}
+
+{{- $shortcode_params := partial "hri/private/params/shortcode-general" $params -}}
+{{- $params = merge $params (dict "shortcode" $shortcode_params) -}}
+
+{{ return $params }}

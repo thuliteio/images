@@ -1,0 +1,35 @@
+{{/*
+  string-to-int.html
+  Converts string-integers to integers
+
+  @author @sean-au
+
+  @context slice or string
+
+  @return input with string-integer elements converted to integers
+
+  @access private
+
+  @example - Go Template
+  {{ partial "hri/private/utils/string-to-int" (slice "1" "2" "3") }}
+  {{ partial "hri/private/utils/string-to-int" "3" }}
+  
+*/}}
+
+{{ $param := . }}
+
+{{/* check for array and recurse, else process */}}
+{{ if reflect.IsSlice $param }}
+  {{/* run this partial for each element in array */}}
+    {{ $param = apply $param "partial" "hri/private/utils/string-to-int" "." }}
+{{ else }}
+  {{/* allows integers, and float. does not allow .xxx numbers (must have leading 0) */}}
+  {{ $onlyNumbers := findRE `^(0|[1-9]\d*)?(\.\d+)?$` $param }}
+  {{ if $onlyNumbers }}
+    {{ $param = int $param }}
+  {{ else }}
+  {{ end }}
+  
+{{ end }}
+
+{{ return $param }}

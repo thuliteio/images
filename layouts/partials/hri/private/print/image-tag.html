@@ -1,0 +1,36 @@
+{{- with .image.picture.original.src }}
+  <img
+  {{- with $.image.loading_prop }}
+    loading="{{ . }}"
+  {{- end -}}
+  {{- if eq $.image.loading "lazysizes" }}
+    data-src="{{ .RelPermalink }}"
+    height="{{ .Height }}"
+    width="{{ .Width }}"
+    {{- with $.image.picture.original.placeholder }}
+    src="{{ . | safeURL }}"
+    {{- end }}
+  {{- else if $.image.provider }}
+    src="{{ . }}"
+    height="{{ $.common.img.Height }}"
+    width="{{ $.common.img.Width }}"
+  {{- else }}
+    src="{{ .RelPermalink }}"
+    height="{{ .Height }}"
+    width="{{ .Width }}"
+  {{- end }}
+  {{- with $.image.class }}
+    class="{{ . }}"
+  {{- end -}}
+  {{- with $.image.sizes_prop }}
+    {{ . | safeHTMLAttr }}
+  {{- end }}
+  {{- with $.image.alt }}
+    alt="{{ . }}"
+  {{- end }}
+  {{- with $.image.title }}
+    title="{{ . }}"
+  {{- end }}
+  />
+{{ end  -}}
+

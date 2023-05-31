@@ -1,0 +1,41 @@
+{{/*
+  params.html
+  Takes inputs and page context.
+  - Processes some inputs
+  - Some inputs default to page/site params
+  - Some inputs passed through
+  - page context passed through
+  Creates a new context for other partials to use
+
+  @author @sean-au
+
+  @context . Context from image partial
+
+  @return Map including .img, .page and various inputs
+
+  @access private
+
+  @example - Go Template
+  {{ partial "hri/private/params" . }}
+
+  UPGRADE:
+
+  santize siteParams > pageParams > pageMeta > inlineParams
+  
+*/}}
+
+{{/* camelCase params have been kept to avoid breaking changes, will be deprecated in future versions */}}
+
+{{ $params := partial "hri/private/params/image-general" . }}
+
+{{ if not $params.provider }}
+  {{ $processing_params := partial "hri/private/params/image-processing" $params }}
+  {{ $params = merge $params (dict "options" $processing_params) }}
+{{ end }}
+
+
+{{ $placeholder_params := partial "hri/private/params/image-placeholder" $params }}
+{{ $params = merge $params $placeholder_params }}
+
+
+{{ return $params }}
