@@ -107,7 +107,7 @@ See the Hyas docs: [Images](https://gethyas.com/docs/recipes/images/)
 
 ## Credits
 
-This npm package is a translation of the Hugo modules:
+This npm package is based on the Hugo modules:
 
 - [future-wd/hugo-responsive-images](https://github.com/future-wd/hugo-responsive-images)
 - [future-wd/hugo-imaging-common](https://github.com/future-wd/hugo-imaging-common)
