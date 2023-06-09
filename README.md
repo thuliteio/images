@@ -9,12 +9,12 @@ Official images integration for Hyas.
 ## Installation
 
 ```bash
-npm i @hyas/images -D
+npm i -D @hyas/images
 ```
 
 ## Setup
 
-Add to `./config/_default/module.toml`:
+Add mounts to `./config/_default/module.toml`:
 
 ```toml
 [[mounts]]
@@ -35,7 +35,7 @@ Add to `./config/_default/module.toml`:
   target = "layouts"
 ```
 
-Add to `./config/_default/params.yml`:
+Set the `image` parameters in `./config/_default/params.yml`:
 
 ```bash
 image:
@@ -100,10 +100,11 @@ img[data-sizes="auto"] {
 }
 ```
 
-## Usage
+## How to use
 
-See the Hyas docs: [Images](https://gethyas.com/docs/recipes/images/)
+See the Hyas documentation:
 
+- [Images](https://docs.gethyas.com/guides/integrations-guide/images/)
 
 ## Credits
 
