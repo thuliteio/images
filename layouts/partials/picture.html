@@ -199,16 +199,16 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 {{- end }}
 
 {{/* Normalize base image (bi). */}}
-{{- $n := site.Params.hyas.images.landscape.normalize | default "1600x900" }}
+{{- $n := site.Params.images.landscape.normalize | default "1600x900" }}
 {{- if gt $bi.Height $bi.Width }}
-  {{- $n = site.Params.hyas.images.portrait.normalize | default "900x1600" }}
+  {{- $n = site.Params.images.portrait.normalize | default "900x1600" }}
 {{- end }}
 {{- $bi = $bi.Fill (print $n ) }}
 
 {{/* Generate LQIP. */}}
-{{- $l := site.Params.hyas.images.landscape.lqip | default "16x9" }}
+{{- $l := site.Params.images.landscape.lqip | default "16x9" }}
 {{- if gt $bi.Height $bi.Width }}
-  {{- $l = site.Params.hyas.images.portrait.lqip | default "9x16" }}
+  {{- $l = site.Params.images.portrait.lqip | default "9x16" }}
 {{- end }}
 {{- $l = $bi.Resize $l }}
 
@@ -284,9 +284,9 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 {{- end }}
 
 {{/* Get widths from config. */}}
-{{- $stdWidths := site.Params.hyas.images.landscape.widths | default "[480 640 800 1024]" }}
+{{- $stdWidths := site.Params.images.landscape.widths | default "[480 640 800 1024]" }}
 {{- if gt $bi.Height $bi.Width }}
-  {{ $stdWidths = site.Params.hyas.images.portrait.widths | default "[480 640 800 1024]" }}
+  {{ $stdWidths = site.Params.images.portrait.widths | default "[480 640 800 1024]" }}
 {{- end }}
 
 {{- /* Determine widths for srcset generation. */}}

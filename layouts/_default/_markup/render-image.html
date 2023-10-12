@@ -168,23 +168,23 @@ partial template, after the render hook has captured the resource.
 {{- end }}
 
 {{/* Normalize and convert to WebP. */}}
-{{- $n := site.Params.hyas.images.landscape.normalize | default "1600x900" }}
+{{- $n := site.Params.images.landscape.normalize | default "1600x900" }}
 {{- if gt $r.Height $r.Width }}
-  {{- $n = site.Params.hyas.images.portrait.normalize | default "900x1600" }}
+  {{- $n = site.Params.images.portrait.normalize | default "900x1600" }}
 {{- end }}
 {{- $r = $r.Fill (print $n " webp") }}
 
 {{/* Generate LQIP. */}}
-{{- $l := site.Params.hyas.images.landscape.lqip | default "16x9" }}
+{{- $l := site.Params.images.landscape.lqip | default "16x9" }}
 {{- if gt $r.Height $r.Width }}
-  {{- $l = site.Params.hyas.images.portrait.lqip | default "9x16" }}
+  {{- $l = site.Params.images.portrait.lqip | default "9x16" }}
 {{- end }}
 {{- $l = $r.Resize $l }}
 
 {{/* Get widths. */}}
-{{- $w := site.Params.hyas.images.landscape.widths | default "[480 640 800 1024]" }}
+{{- $w := site.Params.images.landscape.widths | default "[480 640 800 1024]" }}
 {{- if gt $r.Height $r.Width }}
-  {{ $w = site.Params.hyas.images.portrait.widths | default "[480 640 800 1024]" }}
+  {{ $w = site.Params.images.portrait.widths | default "[480 640 800 1024]" }}
 {{- end }}
 
 {{/* Generate srcset. */}}

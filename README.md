@@ -37,13 +37,13 @@ Add mounts to `./config/_default/module.toml`:
 Set parameters in `./config/_default/params.toml`:
 
 ```bash
-## Hyas images
-[hyas.images]
-  [hyas.images.landscape]
+# Images (@hyas/images)
+[images]
+  [images.landscape]
     normalize = "1360x765" # "1600x900" (default)
     lqip = "16x9" # "16x9" (default)
     widths = [480, 640, 800, 1024]
-  [hyas.images.portrait]
+  [images.portrait]
     normalize = "765x1360" # "900x1600" (default)
     lqip = "9x16" # "9x16" (default)
     widths = [480, 640, 800, 1024]
