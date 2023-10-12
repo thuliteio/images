@@ -9,7 +9,7 @@ Official images integration for Hyas.
 ## Installation
 
 ```bash
-npm i -D @hyas/images
+npm i @hyas/images
 ```
 
 ## Setup
@@ -18,19 +18,19 @@ Add mounts to `./config/_default/module.toml`:
 
 ```toml
 [[mounts]]
-  source = "assets"
-  target = "assets"
-
-[[mounts]]
   source = "node_modules/@hyas/images/assets"
   target = "assets"
 
 [[mounts]]
-  source = "layouts"
-  target = "layouts"
+  source = "assets"
+  target = "assets"
 
 [[mounts]]
   source = "node_modules/@hyas/images/layouts"
+  target = "layouts"
+
+[[mounts]]
+  source = "layouts"
   target = "layouts"
 ```
 
@@ -77,7 +77,7 @@ Add CSS class selectors to `safelist` in `./config/postcss.config.js`:
 ..
       safelist: [
         'img-fluid',
-        'lazyload',
+        'lazyloaded',
         'blur-up',
       ],
 ..
