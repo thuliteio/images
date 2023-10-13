@@ -38,12 +38,12 @@ Set parameters in `./config/_default/params.toml`:
 
 ```bash
 # Images (@hyas/images)
-[images]
-  [images.landscape]
+[hyas_images]
+  [hyas_images.landscape]
     normalize = "1360x765" # "1600x900" (default)
     lqip = "16x9" # "16x9" (default)
     widths = [480, 640, 800, 1024]
-  [images.portrait]
+  [hyas_images.portrait]
     normalize = "765x1360" # "900x1600" (default)
     lqip = "9x16" # "9x16" (default)
     widths = [480, 640, 800, 1024]

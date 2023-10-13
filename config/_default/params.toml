@@ -1,4 +1,4 @@
-## Debug
+# Debug
 [render_hooks.image]
 errorLevel = 'ignore' # ignore (default), warning, or error (fails the build)
 
@@ -6,13 +6,13 @@ errorLevel = 'ignore' # ignore (default), warning, or error (fails the build)
 errorLevel = 'ignore' # ignore (default), warning, or error (fails the build)
 highlightBroken = false # true or false (default)
 
-## Hyas images
-[images]
-  [images.landscape]
+# Images (@hyas/images)
+[hyas_images]
+  [hyas_images.landscape]
     normalize = "1360x765" # "1600x900" (default)
     lqip = "16x9" # "16x9" (default)
     widths = [480, 640, 800, 1024]
-  [images.portrait]
+  [hyas_images.portrait]
     normalize = "765x1360" # "900x1600" (default)
     lqip = "9x16" # "9x16" (default)
     widths = [480, 640, 800, 1024]
