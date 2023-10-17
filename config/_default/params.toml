@@ -1,10 +1,10 @@
 # Debug
 [render_hooks.image]
-errorLevel = 'ignore' # ignore (default), warning, or error (fails the build)
+  errorLevel = 'ignore' # ignore (default), warning, or error (fails the build)
 
 [render_hooks.link]
-errorLevel = 'ignore' # ignore (default), warning, or error (fails the build)
-highlightBroken = false # true or false (default)
+  errorLevel = 'ignore' # ignore (default), warning, or error (fails the build)
+  highlightBroken = false # true or false (default)
 
 # Images (@hyas/images)
 [hyas_images]
