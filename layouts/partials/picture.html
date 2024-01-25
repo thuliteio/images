@@ -19,7 +19,7 @@ the License.
 */}}
 
 {{- /*
-Renders an HTML picture element, in multiple formats and sizes, with an optional overlay.
+Renders an HTML picture element, in multiple formats and sizes.
 
 It resolves internal destinations by looking for a matching:
 
@@ -60,6 +60,7 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 @context {page} [page] The current page.
 @context {string} [src] The path to the base image: a page resource, a global resource, or a remote resource.
 @contect {int} [width] The display width of the image, in pixels, falling back to 100% of the viewport width.
+@context {string} [sizes] = "" # "100vw", "75vw", or "auto" for example
 @context {string slice} [formats] A slice of image formats, ordered by precedence, to use when creating images for the srcset attribute of each source element.
 @context {string} [process] = "" # "fill 1680x720" for example
 @context {string} [decoding] The img element's decoding attribute.
@@ -80,6 +81,7 @@ Add this CSS to your site to remove small gaps between adjacent elements:
     "page" .
     "src" "images/bryce-canyon-national-park.jpg"
     "width" 768
+    "sizes" "auto"
     "formats" (slice "webp" "jpeg")
     "process" "fill 1680x720"
     "decoding" "async"
@@ -128,6 +130,7 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 {{- $width := or (int .width) 0 }}
 {{- $fallbackFormat := "jpeg" }}
 {{- $stdWidths := site.Params.hyas_images.defaults.widths }}
+{{- $stdSizes := or .sizes site.Params.hyas_images.defaults.sizes }}
 
 {{- /* Validate args. */}}
 {{- $validFormats := slice "gif" "jpg" "jpeg" "png" "webp"}}
@@ -183,7 +186,7 @@ Add this CSS to your site to remove small gaps between adjacent elements:
     {{- end }}
   {{- end }}
 {{- else }}
-  {{- /* The width was not speficied, will be using $stdWidths with 100vw. */}}
+  {{- /* The width was not speficied, will be using $stdWidths. */}}
   {{- $stdWidths = $stdWidths | append $r.Width | sort }}
   {{- range $stdWidths }}
     {{- /* Do not enlarge. */}}
@@ -211,7 +214,7 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 <picture>
   {{- range $formats }}
     {{- with index $im . }}
-      {{- $sizes := "auto" }}
+      {{- $sizes := $stdSizes }}
       {{- with $width }}
         {{- $sizes = printf "%dpx" . }}
       {{- end }}
@@ -220,7 +223,7 @@ Add this CSS to your site to remove small gaps between adjacent elements:
           {{- if $k }},{{- end }}
           {{- printf `%s %dw` .RelPermalink .Width }}
         {{- end }}"
-        sizes="{{ $sizes }}">
+        sizes="{{ $stdSizes }}">
     {{- end }}
   {{- end }}
   <img
