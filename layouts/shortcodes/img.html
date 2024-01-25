@@ -17,7 +17,7 @@ the License.
 */}}
 
 {{- /*
-Renders an HTML img element, in multiple formats and sizes, with an optional overlay.
+Renders an HTML img element, in multiple formats and sizes.
 
 It resolves internal destinations by looking for a matching:
 
@@ -73,6 +73,7 @@ This shortcode is a wrapper for, and requires, the img partial:
 
 @param {string} [src] The path to the image: a page resource, a global resource, or a remote resource.
 @param {int} [width] The display width of the image, in pixels, falling back to 100% of the viewport width.
+@param {string} [sizes] = "" # "100vw", "75vw", or "auto" for example
 @param {string slice} [formats] A slice of image formats, ordered by precedence, to use when creating images for the srcset attribute of each source element.
 @param {string} [process] = "" # "fill 1680x720" for example
 @param {string} [decoding] The img element's decoding attribute.
@@ -93,6 +94,7 @@ This shortcode is a wrapper for, and requires, the img partial:
   {{< img
     src="images/bryce-canyon-national-park.jpg"
     width=768
+    sizes="75w"
     formats="webp, jpeg"
     process="fill 1680x720"
     decoding="async"

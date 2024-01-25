@@ -89,7 +89,6 @@ Add this CSS to your site to remove small gaps between adjacent elements:
     "loading" "eager"
     "alt" "Bryce Canyon National Park"
     "title" "A beautiful day in Bryce Canyon National Park"
-    "caption" "Bryce Canyon National Park"
     "class" "foo"
   }}
   {{- partial "img.html" $opts }}
@@ -128,7 +127,6 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 {{- $process := or .process site.Params.hyas_images.defaults.process }}
 {{- $src := or .src "" }}
 {{- $title := or .title "" }}
-{{- $caption := or .caption "" }}
 {{- $width := or (int .width) 0 }}
 {{- $fallbackFormat := "jpeg" }}
 {{- $stdWidths := site.Params.hyas_images.defaults.widths }}
@@ -213,7 +211,6 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 {{- end }}
 
 {{- /* Render. */}}
-
 <img
   {{- range $formats }}
     {{- with index $im . }}

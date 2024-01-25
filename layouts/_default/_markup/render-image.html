@@ -152,8 +152,7 @@ partial template, after the render hook has captured the resource.
 {{- end }}
 
 {{/* Convert to webp. */}}
-{{- $f := site.Params.hyas_images.defaults.format }}
-{{- if eq $f "webp" }}
+{{- if ne $r.MediaType.SubType "gif" }}
   {{- $r = $r.Resize (printf "%dx%d webp" $r.Width $r.Height) }}
 {{- end }}
 
