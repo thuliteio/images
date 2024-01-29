@@ -127,6 +127,7 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 {{- $fetchPriority := or .fetchpriority site.Params.hyas_images.defaults.fetchpriority }}
 {{- $loading := or .loading site.Params.hyas_images.defaults.loading }}
 {{- $process := or .process site.Params.hyas_images.defaults.process }}
+{{- $lqip := or .lqip site.Params.hyas_images.defaults.lqip }}
 {{- $src := or .src "" }}
 {{- $title := or .title "" }}
 {{- $caption := or .caption "" }}
@@ -164,15 +165,15 @@ Add this CSS to your site to remove small gaps between adjacent elements:
   {{- $r = . }}
 {{- end }}
 
-{{/* Convert to webp. */}}
-{{- $f := site.Params.hyas_images.defaults.format }}
-{{- if eq $f "webp" }}
-  {{- $r = $r.Resize (printf "%dx%d webp" $r.Width $r.Height) }}
-{{- end }}
-
 {{- /* Process image. */}}
 {{- with $process }}
   {{- $r = $r.Process $process }}
+{{- end }}
+
+{{- /* Process LQIP. */}}
+{{- $l := "" }}
+{{- with $lqip }}
+  {{- $l = $r.Resize . }}
 {{- end }}
 
 {{- /* Determine widths for srcset generation. */}}
@@ -216,29 +217,30 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 {{- /* Render. */}}
 <figure>
   <img
+    srcset="data:{{ $l.MediaType }};base64,{{ $l.Content | base64Encode }}"
     {{- range $formats }}
       {{- with index $im . }}
         {{- $sizes := $stdSizes }}
         {{- with $width }}
           {{- $sizes = printf "%dpx" . }}
         {{- end }}
-        srcset="
+        data-srcset="
           {{- range $k, $_ := . }}
             {{- if $k }},{{- end }}
             {{- printf `%s %dw` .RelPermalink .Width }}
           {{- end }}"
-        sizes="{{ $stdSizes }}"
+        data-sizes="{{ $stdSizes }}"
       {{- end }}
     {{- end }}
     src="{{ $fi.RelPermalink }}"
     width="{{ string $r.Width }}"
     height="{{ string $r.Height }}"
     decoding="{{ $decoding }}"
-    fetchpriority="{{ site.Params.hyas_images.defaults.fetchpriority }}"
+    fetchpriority="{{ $fetchPriority }}"
     loading="{{ $loading }}"
     alt="{{ $alt }}"
-    {{- with .title -}}title="{{ $title }}"{{- end -}}
-    {{- with .class -}}class="{{ $class }}"{{- end -}}
+    {{- with .title }}title="{{ $title }}"{{- end }}
+    class="lazyload blur-up{{- with .class }} {{ . }}{{- end }}"
   />
   {{- with $caption }}<figcaption>{{ . }}</figcaption>{{- end }}
 </figure>
