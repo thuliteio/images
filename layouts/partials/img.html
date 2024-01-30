@@ -62,7 +62,8 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 @contect {int} [width] The display width of the image, in pixels, falling back to 100% of the viewport width.
 @context {string} [sizes] = "" # "100vw", "75vw", or "auto" for example
 @context {string slice} [formats] A slice of image formats, ordered by precedence, to use when creating images for the srcset attribute of each source element.
-@context {string} [process] = "" # "fill 1680x720" for example
+@context {string} [process] = "" # "fill 1600x900" for example
+@context {string} [lqip] = "" # "16x webp q20" or "21x webp q20" for example
 @context {string} [decoding] The img element's decoding attribute.
 @context {string} [fetchpriority] The img element's fetchpriority attribute.
 @context {string} [loading] The img element's loading attribute.
@@ -83,7 +84,8 @@ Add this CSS to your site to remove small gaps between adjacent elements:
     "width" 768
     "sizes" "auto"
     "formats" (slice "webp" "jpeg")
-    "process" "fill 1680x720"
+    "process" "fill 1600x900"
+    "lqip" "16x webp q20"
     "decoding" "async"
     "fetchpriority" "auto"
     "loading" "eager"
@@ -125,6 +127,7 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 {{- $fetchPriority := or .fetchpriority site.Params.hyas_images.defaults.fetchpriority }}
 {{- $loading := or .loading site.Params.hyas_images.defaults.loading }}
 {{- $process := or .process site.Params.hyas_images.defaults.process }}
+{{- $lqip := or .lqip site.Params.hyas_images.defaults.lqip }}
 {{- $src := or .src "" }}
 {{- $title := or .title "" }}
 {{- $width := or (int .width) 0 }}
@@ -161,15 +164,15 @@ Add this CSS to your site to remove small gaps between adjacent elements:
   {{- $r = . }}
 {{- end }}
 
-{{/* Convert to webp. */}}
-{{- $f := site.Params.hyas_images.defaults.format }}
-{{- if eq $f "webp" }}
-  {{- $r = $r.Resize (printf "%dx%d webp" $r.Width $r.Height) }}
-{{- end }}
-
 {{- /* Process image. */}}
 {{- with $process }}
   {{- $r = $r.Process $process }}
+{{- end }}
+
+{{- /* Process LQIP. */}}
+{{- $l := "" }}
+{{- with $lqip }}
+  {{- $l = $r.Resize . }}
 {{- end }}
 
 {{- /* Determine widths for srcset generation. */}}
@@ -212,30 +215,31 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 
 {{- /* Render. */}}
 <img
+  srcset="data:{{ $l.MediaType }};base64,{{ $l.Content | base64Encode }}"
   {{- range $formats }}
     {{- with index $im . }}
       {{- $sizes := $stdSizes }}
       {{- with $width }}
         {{- $sizes = printf "%dpx" . }}
       {{- end }}
-      srcset="
+      data-srcset="
         {{- range $k, $_ := . }}
           {{- if $k }},{{- end }}
           {{- printf `%s %dw` .RelPermalink .Width }}
         {{- end }}"
-      sizes="{{ $stdSizes }}"
+      data-sizes="{{ $stdSizes }}"
     {{- end }}
   {{- end }}
   src="{{ $fi.RelPermalink }}"
   width="{{ string $r.Width }}"
   height="{{ string $r.Height }}"
   decoding="{{ $decoding }}"
-  fetchpriority="{{ site.Params.hyas_images.defaults.fetchpriority }}"
+  fetchpriority="{{ $fetchPriority }}"
   loading="{{ $loading }}"
   alt="{{ $alt }}"
-  {{- with .title -}}title="{{ $title }}"{{- end -}}
-  {{- with .class -}}class="{{ $class }}"{{- end -}}
-/>
+  {{- with .title }}title="{{ $title }}"{{- end }}
+  class="lazyload blur-up{{- with .class }} {{ . }}{{- end }}"
+>
 
 {{- define "partials/inline/capture-resource.html" }}
   {{- /* Parse destination. */}}

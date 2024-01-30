@@ -75,7 +75,8 @@ This shortcode is a wrapper for, and requires, the figure partial:
 @param {int} [width] The display width of the image, in pixels, falling back to 100% of the viewport width.
 @param {string} [sizes] = "" # "100vw", "75vw", or "auto" for example
 @param {string slice} [formats] A slice of image formats, ordered by precedence, to use when creating images for the srcset attribute of each source element.
-@param {string} [process] = "" # "fill 1680x720" for example
+@param {string} [process] = "" # "fill 1600x900" for example
+@param {string} [lqip] = "" # "16x webp q20" or "21x webp q20" for example
 @param {string} [decoding] The img element's decoding attribute.
 @param {string} [fetchpriority] The img element's fetchpriority attribute.
 @param {string} [loading] The img element's loading attribute.
@@ -97,7 +98,8 @@ This shortcode is a wrapper for, and requires, the figure partial:
     width=768
     sizes="75w"
     formats="webp, jpeg"
-    process="fill 1680x720"
+    process="fill 1600x900"
+    lqip="16x webp q20"
     decoding="async"
     fetchpriority="auto"
     loading="eager"
