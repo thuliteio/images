@@ -241,7 +241,7 @@ Add this CSS to your site to remove small gaps between adjacent elements:
     alt="{{ $alt }}"
     {{- with .title }}title="{{ $title }}"{{- end }}
     class="lazyload blur-up{{- with .class }} {{ . }}{{- end }}"
-  />
+  >
   {{- with $caption }}<figcaption>{{ . }}</figcaption>{{- end }}
 </figure>
 
