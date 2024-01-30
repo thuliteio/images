@@ -3,6 +3,10 @@ img {
   height: auto;
 }
 
+img[data-sizes="auto"] {
+  display: block; 
+}
+
 img, picture {
   font-size: 0;
 }
