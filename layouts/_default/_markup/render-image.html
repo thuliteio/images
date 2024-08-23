@@ -161,9 +161,9 @@ partial template, after the render hook has captured the resource.
   src="{{ $r.RelPermalink }}"
   width="{{ string $r.Width }}"
   height="{{ string $r.Height }}"
-  decoding="{{ site.Params.hyas_images.defaults.decoding }}"
-  fetchpriority="{{ site.Params.hyas_images.defaults.fetchpriority }}"
-  loading="{{ site.Params.hyas_images.defaults.loading }}"
+  decoding="{{ site.Params.thulite_images.defaults.decoding }}"
+  fetchpriority="{{ site.Params.thulite_images.defaults.fetchpriority }}"
+  loading="{{ site.Params.thulite_images.defaults.loading }}"
   alt="{{ .PlainText }}"
   {{- with .Title -}}title="{{ . }}"{{- end -}}
   id="{{ $id }}"

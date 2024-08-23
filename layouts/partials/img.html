@@ -123,17 +123,17 @@ Add this CSS to your site to remove small gaps between adjacent elements:
 {{- $alt := or .alt "" }}
 {{- $class := or .class "" }}
 {{- $formats := or .formats (slice "webp") }}
-{{- $decoding := or .decoding site.Params.hyas_images.defaults.decoding }}
-{{- $fetchPriority := or .fetchpriority site.Params.hyas_images.defaults.fetchpriority }}
-{{- $loading := or .loading site.Params.hyas_images.defaults.loading }}
-{{- $process := or .process site.Params.hyas_images.defaults.process }}
-{{- $lqip := or .lqip site.Params.hyas_images.defaults.lqip }}
+{{- $decoding := or .decoding site.Params.thulite_images.defaults.decoding }}
+{{- $fetchPriority := or .fetchpriority site.Params.thulite_images.defaults.fetchpriority }}
+{{- $loading := or .loading site.Params.thulite_images.defaults.loading }}
+{{- $process := or .process site.Params.thulite_images.defaults.process }}
+{{- $lqip := or .lqip site.Params.thulite_images.defaults.lqip }}
 {{- $src := or .src "" }}
 {{- $title := or .title "" }}
 {{- $width := or (int .width) 0 }}
 {{- $fallbackFormat := "jpeg" }}
-{{- $stdWidths := site.Params.hyas_images.defaults.widths }}
-{{- $stdSizes := or .sizes site.Params.hyas_images.defaults.sizes }}
+{{- $stdWidths := site.Params.thulite_images.defaults.widths }}
+{{- $stdSizes := or .sizes site.Params.thulite_images.defaults.sizes }}
 
 {{- /* Validate args. */}}
 {{- $validFormats := slice "gif" "jpg" "jpeg" "png" "webp"}}
