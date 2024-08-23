@@ -1,4 +1,4 @@
-# @hyas/images
+# @thulite/images
 
 ## 3.2.0
 

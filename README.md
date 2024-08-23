@@ -1,9 +1,9 @@
-# Hyas images
+# Thulite images
 
-Official images integration for Hyas.
+Official images integration for Thulite.
 
 ## Getting Started
 
 See the Doks documentation:
 
-- [Images](https://images.gethyas.com/docs/start-here/getting-started/)
+- [Images](https://images.thulite.io/docs/start-here/getting-started/)
