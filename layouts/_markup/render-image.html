@@ -165,8 +165,8 @@ partial template, after the render hook has captured the resource.
   fetchpriority="{{ site.Params.thulite_images.defaults.fetchpriority }}"
   loading="{{ site.Params.thulite_images.defaults.loading }}"
   alt="{{ .PlainText }}"
-  {{- with .Title -}}title="{{ . }}"{{- end -}}
+  {{- with .Title -}}title="{{ . }}"{{- end }}
   id="{{ $id }}"
-/>
+>
 
 {{- /**/ -}}
