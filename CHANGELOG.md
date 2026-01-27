@@ -1,5 +1,11 @@
 # @thulite/images
 
+## 3.3.4
+
+### Patch Changes
+
+- [#39](https://github.com/thuliteio/images/pull/39) [`08af9fe`](https://github.com/thuliteio/images/commit/08af9fe86897356034d281ae84f586a57e359eb2) Thanks [@h-enk](https://github.com/h-enk)! - Bump dependencies to their latest versions
+
 ## 3.3.3
 
 ### Patch Changes
